@@ -2,7 +2,7 @@
 
 #ifdef HZ_PLATFORM_WINDOWS
 
-inline int main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
 	Hazel::Log::init();
 	HZ_CORE_WARN("Initialized log");
