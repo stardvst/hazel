@@ -3,7 +3,7 @@
 namespace Hazel
 {
 
-void Application::Run()
+void Application::run()
 {
 	while (true);
 }

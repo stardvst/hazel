@@ -14,14 +14,14 @@ template class HAZEL_API std::shared_ptr<spdlog::logger>;
 class HAZEL_API Log
 {
 public:
-	static void Init();
+	static void init();
 
-	inline static std::shared_ptr<spdlog::logger> &getCoreLogger()
+	static std::shared_ptr<spdlog::logger> &getCoreLogger()
 	{
 		return s_CoreLogger;
 	}
 	
-	inline static std::shared_ptr<spdlog::logger> &getClientLogger()
+	static std::shared_ptr<spdlog::logger> &getClientLogger()
 	{
 		return s_ClientLogger;
 	}

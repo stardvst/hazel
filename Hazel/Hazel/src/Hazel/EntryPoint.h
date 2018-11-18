@@ -2,16 +2,14 @@
 
 #ifdef HZ_PLATFORM_WINDOWS
 
-extern Hazel::Application *Hazel::CreateApplication();
-
-int main(int argc, char *argv[])
+inline int main(int argc, char *argv[])
 {
-	Hazel::Log::Init();
+	Hazel::Log::init();
 	HZ_CORE_WARN("Initialized log");
 	HZ_INFO("Hello! Var={0}", 5);
 
-	auto app = Hazel::CreateApplication();
-	app->Run();
+	const auto app = Hazel::createApplication();
+	Hazel::Application::run();
 	delete app;
 }
 

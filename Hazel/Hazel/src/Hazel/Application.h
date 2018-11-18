@@ -11,10 +11,10 @@ public:
 	Application() = default;
 	virtual ~Application() = default;
 
-	void Run();
+	static void run();
 };
 
 // To be defined in CLIENT
-Application *CreateApplication();
+Application *createApplication();
 
 }
