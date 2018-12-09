@@ -18,7 +18,10 @@ project "Hazel"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
-	files 
+	pchheader "hzpch.h"
+	pchsource "Hazel/src/hzpch.cpp"
+
+	files
 	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp"
@@ -46,15 +49,15 @@ project "Hazel"
 			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
 		}
 
-	filter "configurations.Debug"
+	filter "configurations:Debug"
 		defines "HZ_DEBUG"
 		symbols "On"
 
-	filter "configurations.Release"
+	filter "configurations:Release"
 		defines "HZ_RELEASE"
 		optimize "On"
 
-	filter "configurations.Dist"
+	filter "configurations:Dist"
 		defines "HZ_DIST"
 		optimize "On"
 
@@ -66,7 +69,7 @@ project "Sandbox"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
-	files 
+	files
 	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp"
@@ -93,14 +96,14 @@ project "Sandbox"
 			"HZ_PLATFORM_WINDOWS"
 		}
 
-	filter "configurations.Debug"
+	filter "configurations:Debug"
 		defines "HZ_DEBUG"
 		symbols "On"
 
-	filter "configurations.Release"
+	filter "configurations:Release"
 		defines "HZ_RELEASE"
 		optimize "On"
 
-	filter "configurations.Dist"
+	filter "configurations:Dist"
 		defines "HZ_DIST"
 		optimize "On"

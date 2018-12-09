@@ -12,7 +12,7 @@ public:
 	Application() = default;
 	virtual ~Application() = default;
 
-	static void run();
+	void run();
 };
 
 // To be defined in CLIENT

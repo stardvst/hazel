@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 	HZ_INFO("Hello! Var={0}", 5);
 
 	const auto app = Hazel::createApplication();
-	Hazel::Application::run();
+	app->run();
 	delete app;
 }
 
