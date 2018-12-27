@@ -1,25 +1,24 @@
 #include "hzpch.h"
 #include "Application.h"
 
-#include "Hazel/Events/ApplicationEvent.h"
-#include "Hazel/Log.h"
+#include <GLFW/glfw3.h>
 
 namespace Hazel
 {
 
+Application::Application()
+{
+	m_pWindow = std::unique_ptr<Window>(Window::create());
+}
+
 void Application::run()
 {
-	const WindowResizeEvent event{ 1280, 720 };
-	if (event.isInCategory(App))
+	while (m_bRunning)
 	{
-		HZ_TRACE(event);
+		glClearColor(1, 0, 1, 1);
+		glClear(GL_COLOR_BUFFER_BIT);
+		m_pWindow->onUpdate();
 	}
-	if (event.isInCategory(Input))
-	{
-		HZ_TRACE(event);
-	}
-
-	while (true);
 }
 
 }
