@@ -8,7 +8,7 @@ struct GLFWwindow;
 namespace Hazel
 {
 	
-class WindowsWindow : public Window
+class WindowsWindow final : public Window
 {
 public:
 	explicit WindowsWindow(const WindowProps &props);
@@ -24,13 +24,10 @@ public:
 	bool isVSync() const override;
 
 private:
-	virtual void init(const WindowProps &props);
-	virtual void shutdown();
-
 	GLFWwindow *m_pWindow = nullptr;
 
 	// for passing to GLFW as custom data
-	struct WindowData
+	struct WindowData final
 	{
 		std::string sTitle{};
 		unsigned uWidth = 0;
