@@ -46,8 +46,7 @@ public:
 		return getCategoryFlags() & category;
 	}
 
-private:
-	bool m_bIsHandled = false;
+	bool bIsHandled = false;
 };
 
 class EventDispatcher
@@ -66,7 +65,7 @@ public:
 	{
 		if (m_event.getType() == TEvent::getStaticType())
 		{
-			m_event.m_bIsHandled = func(*static_cast<TEvent *>(&m_event));
+			m_event.bIsHandled = func(*static_cast<TEvent *>(&m_event));
 			return true;
 		}
 		return false;

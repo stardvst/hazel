@@ -22,6 +22,10 @@ void Application::run()
 	{
 		glClearColor(1, 0, 1, 1);
 		glClear(GL_COLOR_BUFFER_BIT);
+
+		for (auto pLayer : m_layerStack)
+			pLayer->onUpdate();
+
 		m_pWindow->onUpdate();
 	}
 }
@@ -30,14 +34,30 @@ void Application::onEvent(Event &event)
 {
 	EventDispatcher dispatcher(event);
 	dispatcher.dispatch<WindowCloseEvent>(BIND_EVENT_FN(onWindowClosed));
-	
-	HZ_CORE_TRACE("{0}", event);
+
+	// layers are processed in reverse order during event processing
+	for (auto layerIt = m_layerStack.end(); layerIt != m_layerStack.begin();)
+	{
+		(*--layerIt)->onEvent(event);
+		if (event.bIsHandled)
+			break;
+	}
 }
 
 bool Application::onWindowClosed(const WindowCloseEvent &event)
 {
 	m_bRunning = false;
 	return true;
+}
+
+void Application::pushLayer(Layer *pLayer)
+{
+	m_layerStack.pushLayer(pLayer);
+}
+
+void Application::pushOverlay(Layer *pOverlay)
+{
+	m_layerStack.pushOverlay(pOverlay);
 }
 
 }
