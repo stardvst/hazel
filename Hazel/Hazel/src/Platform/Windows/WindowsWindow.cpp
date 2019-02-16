@@ -6,6 +6,7 @@
 #include "Hazel/Events/KeyEvent.h"
 #include "Hazel/Events/MouseEvent.h"
 
+#include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
 namespace Hazel
@@ -42,6 +43,10 @@ WindowsWindow::WindowsWindow(const WindowProps &props)
 
 	m_pWindow = glfwCreateWindow(static_cast<int>(m_data.uWidth), static_cast<int>(m_data.uHeight), m_data.sTitle.c_str(), nullptr, nullptr);
 	glfwMakeContextCurrent(m_pWindow);
+
+	const auto status = gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress));
+	HZ_CORE_ASSERT(status, "Failed to initialize Glad!");
+	
 	glfwSetWindowUserPointer(m_pWindow, &m_data);
 	setVSync(true);
 
