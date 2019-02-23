@@ -43,4 +43,14 @@ void LayerStack::popOverlay(Layer *pOverlay)
 		m_layers.erase(overlayIt);
 }
 
+LayerStack::layerCollectionIterator LayerStack::begin()
+{
+	return m_layers.begin();
+}
+
+LayerStack::layerCollectionIterator LayerStack::end()
+{
+	return m_layers.end();
+}
+
 }

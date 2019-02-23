@@ -23,15 +23,8 @@ public:
 	void popOverlay(Layer *pOverlay);
 
 	// for layer stack to be iterated over
-	layerCollectionIterator begin()
-	{
-		return m_layers.begin();
-	}
-
-	layerCollectionIterator end()
-	{
-		return m_layers.end();
-	}
+	layerCollectionIterator begin();
+	layerCollectionIterator end();
 
 private:
 	layerCollection m_layers;

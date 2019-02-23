@@ -16,23 +16,13 @@ public:
 	explicit Layer(std::string sName = "Layer");
 	virtual ~Layer() = default;
 
-	virtual void onAttach()
-	{
-	}
+	virtual void onAttach();
+	virtual void onDetach();
 
-	virtual void onDetach()
-	{
-	}
-
-	virtual void onUpdate()
-	{
-	}
-
-	virtual void onEvent(Event &event)
-	{
-	}
-
-	const std::string &getName() const { return m_sDebugName; }
+	virtual void onUpdate();
+	virtual void onEvent(Event &event);
+	
+	const std::string &getName() const;
 	
 protected:
 	std::string m_sDebugName;

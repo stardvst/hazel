@@ -41,7 +41,12 @@ WindowsWindow::WindowsWindow(const WindowProps &props)
 		glfwInitialized = true;
 	}
 
-	m_pWindow = glfwCreateWindow(static_cast<int>(m_data.uWidth), static_cast<int>(m_data.uHeight), m_data.sTitle.c_str(), nullptr, nullptr);
+	m_pWindow = glfwCreateWindow(
+		static_cast<int>(m_data.uWidth),
+		static_cast<int>(m_data.uHeight),
+		m_data.sTitle.c_str(),
+		nullptr,
+		nullptr);
 	glfwMakeContextCurrent(m_pWindow);
 
 	const auto status = gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress));
@@ -51,7 +56,7 @@ WindowsWindow::WindowsWindow(const WindowProps &props)
 	setVSync(true);
 
 	// set GLFW callbacks
-	glfwSetWindowSizeCallback(m_pWindow, [](GLFWwindow *window, int width, int height)
+	glfwSetWindowSizeCallback(m_pWindow, [](GLFWwindow *window, const int width, const int height)
 	{
 		auto &data = *static_cast<WindowData *>(glfwGetWindowUserPointer(window));
 		data.uWidth = width;

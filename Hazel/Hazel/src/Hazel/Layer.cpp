@@ -10,4 +10,25 @@ Layer::Layer(std::string sName /* = "Layer" */)
 {
 }
 
+void Layer::onAttach()
+{
+}
+
+void Layer::onDetach()
+{
+}
+
+void Layer::onUpdate()
+{
+}
+
+void Layer::onEvent(Event &event)
+{
+}
+
+const std::string &Layer::getName() const
+{
+	return m_sDebugName;
+}
+
 }

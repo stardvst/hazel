@@ -19,7 +19,7 @@ public:
 	}
 };
 
-class Sandbox : public Hazel::Application
+class Sandbox final : public Hazel::Application
 {
 public:
 	Sandbox()
