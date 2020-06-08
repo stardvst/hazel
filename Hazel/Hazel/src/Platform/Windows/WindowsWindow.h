@@ -7,7 +7,7 @@ struct GLFWwindow;
 
 namespace Hazel
 {
-	
+
 class WindowsWindow final : public Window
 {
 public:

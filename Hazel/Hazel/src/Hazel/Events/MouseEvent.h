@@ -62,7 +62,7 @@ class HAZEL_API MouseButtonEvent : public Event
 {
 public:
 	int getMouseButton() const { return m_nButton; }
-	
+
 	EVENT_CLASS_CATEGORY(Mouse | Input)
 protected:
 	explicit MouseButtonEvent(const int nButton)
@@ -107,5 +107,5 @@ public:
 
 	EVENT_CLASS_TYPE(MouseButtonReleased)
 };
-	
+
 }

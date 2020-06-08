@@ -61,5 +61,5 @@ public:
 
 	EVENT_CLASS_TYPE(KeyReleased)
 };
-	
+
 }

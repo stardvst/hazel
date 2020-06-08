@@ -51,7 +51,7 @@ WindowsWindow::WindowsWindow(const WindowProps &props)
 
 	const auto status = gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress));
 	HZ_CORE_ASSERT(status, "Failed to initialize Glad!");
-	
+
 	glfwSetWindowUserPointer(m_pWindow, &m_data);
 	setVSync(true);
 

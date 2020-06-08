@@ -21,9 +21,9 @@ public:
 
 	virtual void onUpdate();
 	virtual void onEvent(Event &event);
-	
+
 	const std::string &getName() const;
-	
+
 protected:
 	std::string m_sDebugName;
 };

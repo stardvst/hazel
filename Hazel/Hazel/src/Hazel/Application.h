@@ -20,7 +20,7 @@ public:
 	virtual ~Application() = default;
 
 	void run();
-	
+
 	void onEvent(Event &event);
 
 	void pushLayer(Layer *pLayer);

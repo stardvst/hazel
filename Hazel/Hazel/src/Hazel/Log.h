@@ -17,17 +17,17 @@ public:
 
 	static std::shared_ptr<spdlog::logger> &getCoreLogger()
 	{
-		return s_CoreLogger;
+		return s_coreLogger;
 	}
-	
+
 	static std::shared_ptr<spdlog::logger> &getClientLogger()
 	{
-		return s_ClientLogger;
+		return s_clientLogger;
 	}
 
 private:
-	static std::shared_ptr<spdlog::logger> s_CoreLogger;
-	static std::shared_ptr<spdlog::logger> s_ClientLogger;
+	static std::shared_ptr<spdlog::logger> s_coreLogger;
+	static std::shared_ptr<spdlog::logger> s_clientLogger;
 };
 
 }
