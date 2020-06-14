@@ -10,8 +10,14 @@ namespace Hazel
 
 #define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
 
+Application *Application::s_pInstance = nullptr;
+
 Application::Application()
 {
+	HZ_CORE_ASSERT(!s_pInstance, "Application already exists!");
+
+	s_pInstance = this;
+
 	m_pWindow = std::unique_ptr<Window>(Window::create());
 	m_pWindow->setEventCallback(BIND_EVENT_FN(onEvent));
 }
@@ -53,11 +59,13 @@ bool Application::onWindowClosed(const WindowCloseEvent &event)
 void Application::pushLayer(Layer *pLayer)
 {
 	m_layerStack.pushLayer(pLayer);
+	pLayer->onAttach();
 }
 
 void Application::pushOverlay(Layer *pOverlay)
 {
 	m_layerStack.pushOverlay(pOverlay);
+	pOverlay->onAttach();
 }
 
 }

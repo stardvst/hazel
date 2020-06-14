@@ -16,6 +16,8 @@ template class HAZEL_API std::unique_ptr<Window>;
 class HAZEL_API Application
 {
 public:
+	static Application &get();
+
 	Application();
 	virtual ~Application() = default;
 
@@ -26,13 +28,27 @@ public:
 	void pushLayer(Layer *pLayer);
 	void pushOverlay(Layer *pOverlay);
 
+	Window &getWindow();
+
 private:
 	bool onWindowClosed(const WindowCloseEvent &event);
 
 	std::unique_ptr<Window> m_pWindow = nullptr;
 	bool m_bRunning = true;
 	LayerStack m_layerStack;
+
+	static Application *s_pInstance;
 };
+
+inline Application &Application::get()
+{
+	return *s_pInstance;
+}
+
+inline Window &Application::getWindow()
+{
+	return *m_pWindow;
+}
 
 // To be defined in CLIENT
 Application *createApplication();
