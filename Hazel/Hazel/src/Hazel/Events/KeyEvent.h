@@ -44,6 +44,24 @@ private:
 	int m_nRepeatCount;
 };
 
+class HAZEL_API KeyTypedEvent : public KeyEvent
+{
+public:
+	KeyTypedEvent(const int nKeyCode)
+		: KeyEvent(nKeyCode)
+	{
+	}
+
+	std::string toString() const override
+	{
+		std::stringstream ss;
+		ss << "KeyTypedEvent: " << m_nKeyCode;
+		return ss.str();
+	}
+
+	EVENT_CLASS_TYPE(KeyTyped)
+};
+
 class HAZEL_API KeyReleasedEvent : public KeyEvent
 {
 public:

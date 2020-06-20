@@ -11,7 +11,7 @@ enum class EEventType
 	None,
 	WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved,
 	AppTick, AppUpdate, AppRender,
-	KeyPressed, KeyReleased,
+	KeyPressed, KeyTyped, KeyReleased,
 	MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
 };
 
