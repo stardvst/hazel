@@ -43,6 +43,8 @@ public:
 	virtual void setVSync(bool bEnabled) = 0;
 	virtual bool isVSync() const = 0;
 
+	virtual void *getNativeWindow() const = 0;
+
 	// To be implemented per platform (in implementation file)
 	static Window *create(const WindowProps &props = WindowProps{});
 };

@@ -23,6 +23,8 @@ public:
 	void setVSync(bool bEnabled) override;
 	bool isVSync() const override;
 
+	void *getNativeWindow() const override;
+
 private:
 	GLFWwindow *m_pWindow = nullptr;
 
@@ -38,5 +40,10 @@ private:
 
 	WindowData m_data;
 };
+
+inline void *WindowsWindow::getNativeWindow() const
+{
+	return m_pWindow;
+}
 
 }
