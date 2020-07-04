@@ -6,7 +6,6 @@ int main(int argc, char *argv[])
 {
 	Hazel::Log::init();
 	HZ_CORE_WARN("Initialized log");
-	HZ_INFO("Hello! Var={0}", 5);
 
 	const auto app = Hazel::createApplication();
 	app->run();
