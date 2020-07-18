@@ -5,11 +5,6 @@
 namespace Hazel
 {
 
-LayerStack::LayerStack()
-	: m_layerInsertIt(begin())
-{
-}
-
 LayerStack::~LayerStack()
 {
 	for (auto pLayer : m_layers)
@@ -18,7 +13,8 @@ LayerStack::~LayerStack()
 
 void LayerStack::pushLayer(Layer *pLayer)
 {
-	m_layerInsertIt = m_layers.emplace(m_layerInsertIt, pLayer);
+	m_layers.emplace(m_layers.begin() + m_layerInsertIdx, pLayer);
+	++m_layerInsertIdx;
 }
 
 void LayerStack::pushOverlay(Layer *pOverlay)
@@ -32,7 +28,7 @@ void LayerStack::popLayer(Layer *pLayer)
 	if (layerIt != m_layers.cend())
 	{
 		m_layers.erase(layerIt);
-		--m_layerInsertIt;
+		--m_layerInsertIdx;
 	}
 }
 

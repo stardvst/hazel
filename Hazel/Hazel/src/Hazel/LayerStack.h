@@ -14,7 +14,6 @@ public:
 	using layerCollection = std::vector<Layer *>;
 	using layerCollectionIterator = layerCollection::iterator;
 
-	LayerStack();
 	~LayerStack();
 
 	void pushLayer(Layer *pLayer);
@@ -28,7 +27,7 @@ public:
 
 private:
 	layerCollection m_layers;
-	layerCollectionIterator m_layerInsertIt;
+	unsigned int m_layerInsertIdx = 0;
 };
 
 }

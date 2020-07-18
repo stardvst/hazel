@@ -8,7 +8,9 @@
 
 namespace Hazel
 {
+
 class WindowCloseEvent;
+class ImGuiLayer;
 
 // temporary, to disable warning C4251
 template class HAZEL_API std::unique_ptr<Window>;
@@ -34,6 +36,7 @@ private:
 	bool onWindowClosed(const WindowCloseEvent &event);
 
 	std::unique_ptr<Window> m_pWindow = nullptr;
+	ImGuiLayer *m_pImGuiLayer = nullptr;
 	bool m_bRunning = true;
 	LayerStack m_layerStack;
 

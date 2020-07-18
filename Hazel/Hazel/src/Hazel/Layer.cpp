@@ -26,6 +26,10 @@ void Layer::onEvent(Event &event)
 {
 }
 
+void Layer::onImGuiRender()
+{
+}
+
 const std::string &Layer::getName() const
 {
 	return m_sDebugName;

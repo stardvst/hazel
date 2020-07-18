@@ -14,6 +14,13 @@ public:
 			HZ_INFO("Tab key is pressed");
 	}
 
+	void onImGuiRender() override
+	{
+		//ImGui::Begin();
+		//ImGui::Text("Hello World!");
+		//ImGui::End();
+	}
+
 	void onEvent(Hazel::Event &event) override
 	{
 		if (event.getType() == Hazel::EEventType::KeyPressed)
@@ -30,7 +37,6 @@ public:
 	Sandbox()
 	{
 		pushLayer(new ExampleLayer);
-		pushLayer(new Hazel::ImGuiLayer);
 	}
 };
 

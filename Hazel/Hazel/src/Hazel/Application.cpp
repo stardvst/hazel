@@ -4,6 +4,8 @@
 #include "Log.h"
 #include "Input.h"
 
+#include "ImGui/ImGuiLayer.h"
+
 #include <glad/glad.h>
 
 namespace Hazel
@@ -21,6 +23,9 @@ Application::Application()
 
 	m_pWindow = std::unique_ptr<Window>(Window::create());
 	m_pWindow->setEventCallback(BIND_EVENT_FN(onEvent));
+
+	m_pImGuiLayer = new ImGuiLayer;
+	pushOverlay(m_pImGuiLayer);
 }
 
 void Application::run()
@@ -32,6 +37,11 @@ void Application::run()
 
 		for (auto pLayer : m_layerStack)
 			pLayer->onUpdate();
+
+		m_pImGuiLayer->begin();
+		for (auto pLayer : m_layerStack)
+			pLayer->onImGuiRender();
+		m_pImGuiLayer->end();
 
 		m_pWindow->onUpdate();
 	}
