@@ -12,9 +12,6 @@ namespace Hazel
 class WindowCloseEvent;
 class ImGuiLayer;
 
-// temporary, to disable warning C4251
-template class HAZEL_API std::unique_ptr<Window>;
-
 class HAZEL_API Application
 {
 public:

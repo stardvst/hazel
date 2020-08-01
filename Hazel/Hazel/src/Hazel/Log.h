@@ -7,9 +7,6 @@
 namespace Hazel
 {
 
-// temporary, to disable warning C4251
-template class HAZEL_API std::shared_ptr<spdlog::logger>;
-
 class HAZEL_API Log
 {
 public:

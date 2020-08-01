@@ -2,9 +2,6 @@
 
 #include "Core.h"
 
-// temporary, to disable warning C4251
-#pragma warning(disable: 4251)
-
 namespace Hazel
 {
 
