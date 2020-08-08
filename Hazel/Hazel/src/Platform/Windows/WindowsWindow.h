@@ -8,6 +8,8 @@ struct GLFWwindow;
 namespace Hazel
 {
 
+class OpenGLContext;
+
 class WindowsWindow final : public Window
 {
 public:
@@ -27,6 +29,7 @@ public:
 
 private:
 	GLFWwindow *m_pWindow = nullptr;
+	OpenGLContext *m_pContext = nullptr;
 
 	// for passing to GLFW as custom data
 	struct WindowData final
