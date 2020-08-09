@@ -37,6 +37,10 @@ private:
 	bool m_bRunning = true;
 	LayerStack m_layerStack;
 
+	unsigned int m_nVertexArray = 0;
+	unsigned int m_nVertexBuffer = 0;
+	unsigned int m_nIndexBuffer = 0;
+
 	static Application *s_pInstance;
 };
 
