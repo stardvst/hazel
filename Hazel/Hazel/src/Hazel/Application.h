@@ -6,6 +6,8 @@
 #include "Hazel/LayerStack.h"
 #include "Window.h"
 
+#include "Hazel/Renderer/Shader.h"
+
 namespace Hazel
 {
 
@@ -40,6 +42,7 @@ private:
 	unsigned int m_nVertexArray = 0;
 	unsigned int m_nVertexBuffer = 0;
 	unsigned int m_nIndexBuffer = 0;
+	std::unique_ptr<Shader> m_pShader = nullptr;
 
 	static Application *s_pInstance;
 };
