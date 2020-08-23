@@ -8,6 +8,7 @@
 #include "ImGui/ImGuiLayer.h"
 
 #include <glad/glad.h>
+#include <memory>
 
 namespace Hazel
 {
@@ -31,27 +32,22 @@ Application::Application()
 	glGenVertexArrays(1, &m_nVertexArray);
 	glBindVertexArray(m_nVertexArray);
 
-	glGenBuffers(1, &m_nVertexBuffer);
-	glBindBuffer(GL_ARRAY_BUFFER, m_nVertexBuffer);
-
 	float vertices[3 * 3] = {
 		-0.5f, -0.5f, 0.0f,
 		0.5f, -0.5f, 0.0f,
 		0.0f, 0.5f, 0.0f
 	};
 
-	// upload to GPU (from CPU)
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	m_pVertexBuffer.reset(VertexBuffer::create(vertices, sizeof(vertices)));
+	//m_pVertexBuffer->bind();
 
 	// tell GPU layout of data
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
 
-	glGenBuffers(1, &m_nIndexBuffer);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_nIndexBuffer);
-
-	unsigned int indices[3] = { 0, 1, 2 };
+	uint32_t indices[3] = { 0, 1, 2 };
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+	m_pIndexBuffer.reset(IndexBuffer::create(indices, 3));
 
 	std::string vertexSrc = R"(
 		#version 330 core
@@ -78,7 +74,7 @@ Application::Application()
 		}
 	)";
 
-	m_pShader.reset(new Shader(vertexSrc, fragmentSrc));
+	m_pShader = std::make_unique<Shader>(vertexSrc, fragmentSrc);
 }
 
 void Application::run()
@@ -90,7 +86,7 @@ void Application::run()
 
 		m_pShader->bind();
 		glBindVertexArray(m_nVertexArray);
-		glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, nullptr);
+		glDrawElements(GL_TRIANGLES, m_pIndexBuffer->count(), GL_UNSIGNED_INT, nullptr);
 
 		for (auto pLayer : m_layerStack)
 			pLayer->onUpdate();

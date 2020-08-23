@@ -7,6 +7,7 @@
 #include "Window.h"
 
 #include "Hazel/Renderer/Shader.h"
+#include "Hazel/Renderer/Buffer.h"
 
 namespace Hazel
 {
@@ -40,9 +41,9 @@ private:
 	LayerStack m_layerStack;
 
 	unsigned int m_nVertexArray = 0;
-	unsigned int m_nVertexBuffer = 0;
-	unsigned int m_nIndexBuffer = 0;
 	std::unique_ptr<Shader> m_pShader = nullptr;
+	std::unique_ptr<VertexBuffer> m_pVertexBuffer = nullptr;
+	std::unique_ptr<IndexBuffer> m_pIndexBuffer = nullptr;
 
 	static Application *s_pInstance;
 };
